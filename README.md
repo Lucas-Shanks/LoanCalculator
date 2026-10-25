@@ -1,4 +1,4 @@
-Total loan amount is calculated using the standard compounding interest forumula
+Total loan amount is calculated using the standard compounding interest forumula 
 M = P * r(1 + r)^n / ((1+r)^n - 1)
 
 P = Loan amount

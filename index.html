@@ -15,7 +15,7 @@
         <form>
             <div class="field">
                 <label for="loanAmount">Loan Amount</label>
-                <input type="number" id="loanAmount" placeholder="Loan Amount" min="1" required>
+                <input type="number" id="loanAmount" placeholder="Loan Amount (Required)" min="1" required>
             </div>
 
             <div class="field">
@@ -25,10 +25,11 @@
 
             <div class="field">
                 <label for="loanTerm">Loan Term (years)</label>
-                <input type="number" id="loanTerm" placeholder="Loan Term (years)" min="1" max="30" required>
+                <input type="number" id="loanTerm" placeholder="Loan Term (years) (Required)" min="1" max="30" required>
             </div>
 
             <button id="calculateAmount">Calculate</button>
+            <p id="hint" class="hint" aria-live="polite"></p>
         </form>
 
         <!-- Creates an empty div for results outputted from the script -->
