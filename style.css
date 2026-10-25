@@ -1,9 +1,29 @@
-/* Colour variables */
-:root{
+/* Colour variables - light mode */
+:root {
     --background: #f4f6f8;
     --card: #ffffff;
-    --muted: #d6dbdf;
-    --accent: #32aeec;
+    --text: #1f2933;
+    --muted: #616e7c;           /* hint text */
+    --disabled: #c5c9d1;        /* disabled button */
+    --accent: #0b6fa4;          /* labels, borders, button */
+    --accent-hover: #095a85;
+    --enabled-accent: #ffffff;  /* text on the accent button */
+    --error: #c0392b;
+}
+
+/* Dark mode compatability */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #121417;
+        --card: #1e2228;
+        --text: #e4e7eb;
+        --muted: #9aa5b1;
+        --disabled: #3a4048;
+        --accent: #32aeec;
+        --accent-hover: #5cc0f0;
+        --enabled-accent: #0b1620;
+        --error: #ff7b72;
+    }
 }
 
 /* Keeps sizing predictable */
@@ -16,10 +36,14 @@ body {
     margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background: var(--background);
-    color: black;
+    color: var(--text);
     display: flex;
     justify-content: center;
     padding: 40px 16px;
+}
+
+h1 {
+    color: var(--accent);
 }
 
 .card {
@@ -28,9 +52,8 @@ body {
     max-width: 420px;
     padding: 32px;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
-
 
 .field {
     display: flex;
@@ -42,13 +65,15 @@ body {
 /* Text input styling */
 input {
     padding: 10px 12px;
-    font-size: 12px;
+    font-size: 16px;
+    background-color: var(--card);
+    color: var(--text);
     border: 1px solid var(--accent);
     border-radius: 8px;
 }
 
 input:focus {
-    border-color: black;
+    border-color: var(--text);
     outline: none;
     background-color: var(--background);
 }
@@ -63,7 +88,7 @@ label {
     margin-top: 8px;
     min-height: 16px;
     font-size: 14px;
-    color: gray;
+    color: var(--muted);
     text-align: center;
 }
 
@@ -73,7 +98,7 @@ label {
     padding: 12px;
     font-size: 16px;
     font-weight: 600;
-    color: white;
+    color: var(--enabled-accent);
     background-color: var(--accent);
     border: none;
     border-radius: 8px;
@@ -82,7 +107,7 @@ label {
 }
 
 .card button:hover {
-    background-color: #2588b9;
+    background-color: var(--accent-hover);
 }
 
 .card button:active {
@@ -90,7 +115,7 @@ label {
 }
 
 .card button:disabled {
-    background-color: var(--muted);
+    background-color: var(--disabled);
     cursor: not-allowed;
 }
 
@@ -99,5 +124,21 @@ label {
 }
 
 .error {
-    color: #c0392b;
+    color: var(--error);
+}
+
+/* Mobile phone compatibility */
+@media (max-width: 480px) {
+    body {
+        padding: 16px 8px;
+    }
+
+    .card {
+        padding: 20px;
+        border-radius: 6px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
 }
