@@ -2,8 +2,8 @@
 :root{
     --background: #f4f6f8;
     --card: #ffffff;
-    --muted: #616e7c;
-    --border: #5d32ec;
+    --muted: #d6dbdf;
+    --accent: #32aeec;
 }
 
 /* Keeps sizing predictable */
@@ -16,7 +16,7 @@ body {
     margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background: var(--background);
-    color: var(--text);
+    color: black;
     display: flex;
     justify-content: center;
     padding: 40px 16px;
@@ -43,7 +43,7 @@ body {
 input {
     padding: 10px 12px;
     font-size: 12px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--accent);
     border-radius: 8px;
 }
 
@@ -53,6 +53,20 @@ input:focus {
     background-color: var(--background);
 }
 
+label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.hint {
+    margin-top: 8px;
+    min-height: 16px;
+    font-size: 14px;
+    color: gray;
+    text-align: center;
+}
+
 /* Button styling */
 .card button {
     width: 100%;
@@ -60,15 +74,15 @@ input:focus {
     font-size: 16px;
     font-weight: 600;
     color: white;
-    background-color: var(--border);
+    background-color: var(--accent);
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s
+    transition: background-color 0.2s;
 }
 
 .card button:hover {
-    background-color: #4a26c4;
+    background-color: #2588b9;
 }
 
 .card button:active {
@@ -81,5 +95,9 @@ input:focus {
 }
 
 #result {
-    margin-top: auto;
+    margin-top: 24px;
+}
+
+.error {
+    color: #c0392b;
 }
