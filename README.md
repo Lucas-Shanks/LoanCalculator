@@ -5,6 +5,8 @@ P = Loan amount
 r = interest rate per period
 n = number of payments (year * 12)
 
+As my mission to
+Lighthouse accessibility scores:
 [![Lighthouse Accessibility](https://img.shields.io/badge/Lighthouse%20Accessibility-100-brightgreen)](https://pagespeed.web.dev/analysis/https-lucas-shanks-github-io-LoanCalculator/8nhy9f5mqq)
 ![Performance](https://img.shields.io/badge/Performance-100-brightgreen)
 ![Accessibility](https://img.shields.io/badge/Accessibility-100-brightgreen)
