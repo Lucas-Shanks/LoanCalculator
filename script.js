@@ -6,6 +6,16 @@ const currency = new Intl.NumberFormat('en-AU', { style: 'currency', currency: '
 const button = form.querySelector('button');
 const hint = document.getElementById('hint');
 
+// Logic to add commas separating thousands ($1,000)
+const loanAmountInput = document.getElementById('loanAmount');
+// Event listener to update during each keystroke
+loanAmountInput.addEventListener('input', function() {
+    // Strips out any non digits from the loanAmountInput
+    const digits = loanAmountInput.value.replace(/\D/g, '');
+    // adds the commas into the right places, ? since there can be no digits (or not enough to need a comma)
+    loanAmountInput.value = digits ? Number(digits).toLocaleString('en-AU') : '';
+});
+
 // Creates a function that updates whether the button is enabled or not
 function updateButton() {
     const isValid = form.checkValidity();
@@ -20,7 +30,7 @@ function updateButton() {
     // Since there can be >= 1 missing input, an empty array is created to contain which input is missing
     const missingInput = [];
     // If loan amount is missing, push "a loan amount" to the hint
-    if (!document.getElementById('loanAmount').checkValidity()) {
+    if (!loanAmountInput.checkValidity()) {
         missingInput.push('a loan amount');
     }
     // If loan term is missing, outputs to hint as well
@@ -38,7 +48,8 @@ form.addEventListener('submit', function(event) {
     event.preventDefault(); // Stops the page reloading
 
     // Gets the information from the number inputs and parses them to numbers 
-    const principal = parseFloat(document.getElementById('loanAmount').value);  
+    // Remove commas before converting, otherwise parseFloat stops at the first comma
+    const principal = parseFloat(loanAmountInput.value.replace(/,/g, ''));
     const interestRate = parseFloat(document.getElementById('interestRate').value) || 0; 
     const loanTerm = parseFloat(document.getElementById('loanTerm').value); 
     const r = interestRate / 100 / 12;  //  Monthly interest rate
@@ -65,7 +76,8 @@ form.addEventListener('submit', function(event) {
 
     // Result output
     result.innerHTML = `
-        <p>Monthly Payment: <strong>${currency.format(monthlyPayment)}</strong></p> 
-        <p>Total Repaid: <strong>${currency.format(totalRepaid)}</strong></p> 
-        <p>Interest Paid: <strong>${currency.format(totalInterest)}</strong></p>`;
+        <p>Monthly Payment: <strong>${currency.format(monthlyPayment)}</strong></p>
+        <p>Interest Paid: <strong>${currency.format(totalInterest)}</strong></p> 
+        <p>Total Repaid: <strong>${currency.format(totalRepaid)}</strong></p>`;
+        
 });
